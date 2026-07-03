@@ -1,0 +1,10 @@
+# SignPath Artifact Configuration
+# Im SignPath-Portal unter: Project > Artifact Configurations > New
+# Slug muss exakt "exe-signing" heissen (wie im Workflow angegeben)
+
+artifact-configuration:
+  files:
+    - path: retrokauz_launcher.exe
+      pe-signed:
+        certificate:
+          name: release-signing

@@ -1,0 +1,436 @@
+/* ============================================================
+   VICE Launcher — Theme B · C64 Homage
+   Periwinkle on royal blue · scanlines · classic palette
+   ============================================================ */
+
+/* ---------- Color tokens (reference) ----------
+   bg          #40318D
+   bgRaised    #4B3BA3
+   card        #352784
+   cardBorder  #7B68EE
+   accent      #A59CFF
+   accentSoft  #6C5CE7
+   text        #EEEAFF
+   textMuted   #B5AEEA
+   textDim     #7B6FBF
+   success     #B8F27D
+   warn        #FFE15D
+   danger      #FF7A7A
+-------------------------------------------------------------- */
+
+* {
+    outline: none;
+}
+
+QWidget {
+    background-color: #40318D;
+    color: #EEEAFF;
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    font-size: 13px;
+}
+
+QMainWindow, QDialog {
+    background-color: #40318D;
+}
+
+/* ---------- Sidebar ---------- */
+#Sidebar {
+    background-color: #4B3BA3;
+    border-right: 1px solid #7B68EE;
+    min-width: 220px;
+    max-width: 220px;
+}
+
+#SidebarBrand {
+    font-size: 13px;
+    font-weight: 700;
+    color: #EEEAFF;
+    padding: 18px 18px 4px 18px;
+}
+
+#SidebarVersion {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: #7B6FBF;
+    padding: 0 18px 14px 18px;
+}
+
+#SidebarCategoryLabel {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: #7B6FBF;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 8px 18px 6px 18px;
+    background: transparent;
+}
+
+#SidebarItem {
+    background: transparent;
+    color: #B5AEEA;
+    padding: 8px 10px;
+    margin: 1px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    border: none;
+}
+
+#SidebarItem:hover {
+    background-color: #55449D;
+    color: #EEEAFF;
+}
+
+#SidebarItemActive {
+    background-color: rgba(165, 156, 255, 0.4);
+    color: #EEEAFF;
+    font-weight: 600;
+    padding: 8px 10px;
+    margin: 1px 10px;
+    border-radius: 4px;
+    text-align: left;
+    border: none;
+}
+
+#StatusPill {
+    background-color: #352784;
+    border: 1px solid #7B68EE;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: #B5AEEA;
+}
+
+/* ---------- Toolbar ---------- */
+#Toolbar {
+    background-color: #40318D;
+    border-bottom: 1px solid #7B68EE;
+    min-height: 56px;
+    max-height: 56px;
+    padding: 0 20px;
+}
+
+#ToolbarTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #EEEAFF;
+}
+
+#ToolbarSub {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: #7B6FBF;
+}
+
+#SearchBox {
+    background-color: #352784;
+    border: 1px solid #7B68EE;
+    border-radius: 4px;
+    padding: 6px 12px;
+}
+
+QLineEdit#SearchInput {
+    background: transparent;
+    border: none;
+    color: #EEEAFF;
+    font-size: 12px;
+    selection-background-color: #A59CFF;
+}
+
+/* ---------- Drop hint ---------- */
+#DropHint {
+    background: transparent;
+    border: 1px dashed #7B68EE;
+    border-radius: 4px;
+    padding: 10px 14px;
+    color: #B5AEEA;
+    font-size: 12px;
+}
+
+#DropHintActive {
+    border: 1px dashed #A59CFF;
+    background: rgba(165, 156, 255, 0.1);
+    color: #EEEAFF;
+}
+
+/* ---------- Emulator card ---------- */
+#EmulatorCard {
+    background-color: #352784;
+    border: 1px solid #7B68EE;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+#EmulatorCard:hover {
+    border: 1px solid #A59CFF;
+    background-color: #3D2E92;
+}
+
+#EmulatorIconFrame {
+    background-color: #4B3BA3;
+    border: 1px solid #7B68EE;
+    border-radius: 4px;
+    min-width: 56px;
+    max-width: 56px;
+    min-height: 56px;
+    max-height: 56px;
+}
+
+#EmulatorTitle {
+    font-size: 15px;
+    font-weight: 700;
+    color: #EEEAFF;
+}
+
+#EmulatorSub {
+    font-size: 11px;
+    color: #B5AEEA;
+}
+
+#EmulatorExe {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: #7B6FBF;
+}
+
+/* ---------- Buttons ---------- */
+QPushButton#PrimaryButton {
+    background-color: #A59CFF;
+    color: #2A1E6E;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+QPushButton#PrimaryButton:hover {
+    background-color: #B6AEFF;
+}
+
+QPushButton#PrimaryButton:pressed {
+    background-color: #8B82E6;
+}
+
+QPushButton#PrimaryButton:disabled {
+    background-color: #6C5CE7;
+    color: #B5AEEA;
+}
+
+QPushButton#SecondaryButton {
+    background-color: #352784;
+    color: #EEEAFF;
+    border: 1px solid #7B68EE;
+    border-radius: 4px;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+QPushButton#SecondaryButton:hover {
+    border-color: #A59CFF;
+}
+
+QPushButton#GhostButton {
+    background: transparent;
+    color: #B5AEEA;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+QPushButton#GhostButton:hover {
+    color: #EEEAFF;
+}
+
+/* ---------- Settings ---------- */
+#SettingsSidebar {
+    background-color: #4B3BA3;
+    border-right: 1px solid #7B68EE;
+    min-width: 180px;
+    max-width: 180px;
+}
+
+#SettingsSection {
+    border-bottom: 1px solid #7B68EE;
+    padding: 20px 24px;
+}
+
+#SettingsSectionTitle {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: #7B6FBF;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+}
+
+#SettingsRowLabel {
+    font-size: 13px;
+    color: #EEEAFF;
+    font-weight: 500;
+}
+
+#SettingsRowHint {
+    font-size: 11px;
+    color: #B5AEEA;
+}
+
+#PathDisplay {
+    background-color: #352784;
+    border: 1px solid #7B68EE;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: #EEEAFF;
+}
+
+/* ---------- Installer wizard ---------- */
+#InstallerSidebar {
+    background-color: #6C5CE7;
+    min-width: 200px;
+    max-width: 200px;
+    padding: 24px;
+}
+
+#InstallerBrand {
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+#InstallerStep {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+}
+
+#InstallerStepActive {
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+}
+
+#InstallerStepDone {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+}
+
+/* ---------- Progress + log ---------- */
+QProgressBar#ProgressBar {
+    background-color: #4B3BA3;
+    border: none;
+    border-radius: 3px;
+    height: 6px;
+    text-align: center;
+}
+
+QProgressBar#ProgressBar::chunk {
+    background-color: #A59CFF;
+    border-radius: 3px;
+}
+
+QTextEdit#LogView, QPlainTextEdit#LogView {
+    background-color: #000000;
+    border: 1px solid #7B68EE;
+    border-radius: 4px;
+    color: #B8F27D;
+    font-family: "JetBrains Mono", "Consolas", monospace;
+    font-size: 11px;
+    padding: 14px;
+}
+
+/* ---------- Scrollbar ---------- */
+QScrollBar:vertical {
+    background: transparent;
+    width: 10px;
+    margin: 0;
+}
+
+QScrollBar::handle:vertical {
+    background: #7B68EE;
+    border-radius: 5px;
+    min-height: 30px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #A59CFF;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical,
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: transparent;
+    border: none;
+    height: 0;
+}
+
+/* ---------- Misc ---------- */
+QToolTip {
+    background-color: #352784;
+    color: #EEEAFF;
+    border: 1px solid #7B68EE;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+}
+
+QMenu {
+    background-color: #352784;
+    border: 1px solid #7B68EE;
+    border-radius: 4px;
+    padding: 4px;
+    color: #EEEAFF;
+}
+
+QMenu::item {
+    padding: 6px 14px;
+    border-radius: 3px;
+}
+
+QMenu::item:selected {
+    background-color: #A59CFF;
+    color: #2A1E6E;
+}
+
+QMenu::separator {
+    height: 1px;
+    background: #7B68EE;
+    margin: 4px 0;
+}
+
+QCheckBox {
+    color: #EEEAFF;
+    font-size: 13px;
+    spacing: 8px;
+}
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #7B68EE;
+    border-radius: 3px;
+    background: #352784;
+}
+
+QCheckBox::indicator:checked {
+    background: #A59CFF;
+    border-color: #A59CFF;
+}

@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+.eggs/
+dist/
+build/
+*.whl
+
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+
+# PyInstaller
+*.spec.bak
+*.manifest
+_MEIPASS*/
+
+# Konfiguration (Benutzerpfade, keine Versionierung noetig)
+*.cfg.local
+*.json.local
+
+# Archiv / Backups
+Archiv/
+
+# IDE / Tools
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstash.log
+Thumbs.db
+Desktop.ini
+*.lnk
+
+# Claude AI
+.claude/
+
+# Node (Landingpage)
+node_modules/
+package-lock.json
+/landingpage 
+
+# Windows
+*.exe
+*.dll
+*.log
