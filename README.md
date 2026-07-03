@@ -15,7 +15,7 @@
 
 ---
 
-Kein Terminal-Gefrickel, keine Kommandozeilen-Flags auswendig lernen. Ein Klick, ein Emulator, ein Stück C64-Nostalgie. 💾
+VICE ist super! Und jetzt noch dieser Launcher dazu. Knorke und Retro. 💾
 
 ---
 
