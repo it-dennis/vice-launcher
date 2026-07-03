@@ -1,12 +1,25 @@
-# Retrokauz VICE Launcher
+<div align="center">
 
-Ein schlankes GUI-Frontend für den [VICE-Emulator](https://vice-emu.sourceforge.io/), das alle unterstützten Commodore-Maschinen per Klick startet – ohne Kommandozeile.
+<img src="logo/by_retrokauz.png" alt="Retrokauz VICE Launcher Logo" width="300">
 
-![Logo](logo/by_retrokauz.png)
+# 🕹️ Retrokauz VICE Launcher
+
+**Ein schlankes GUI-Frontend für den [VICE-Emulator](https://vice-emu.sourceforge.io/) — einfach knorke Retro.**
+
+![Platform](https://img.shields.io/badge/platform-Windows-0078D6?logo=windows&logoColor=white)
+![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)
+![License](https://img.shields.io/badge/license-GPLv3-blue)
+![VICE](https://img.shields.io/badge/VICE-GPLv2%2B-8A2BE2)
+
+</div>
 
 ---
 
-## Unterstützte Emulatoren
+Kein Terminal-Gefrickel, keine Kommandozeilen-Flags auswendig lernen. Ein Klick, ein Emulator, ein Stück C64-Nostalgie. 💾
+
+---
+
+## 🎮 Unterstützte Emulatoren
 
 | Button | Emulator | Executable |
 |--------|----------|------------|
@@ -22,7 +35,7 @@ Ein schlankes GUI-Frontend für den [VICE-Emulator](https://vice-emu.sourceforge
 
 ---
 
-## Voraussetzungen
+## ✅ Voraussetzungen
 
 - **VICE** muss installiert sein → [Download vice-emu.sourceforge.io](https://vice-emu.sourceforge.io/)
 - **Python 3.11+** (nur für den Quellstart / Build)
@@ -30,7 +43,7 @@ Ein schlankes GUI-Frontend für den [VICE-Emulator](https://vice-emu.sourceforge
 
 ---
 
-## Schnellstart (Quellcode)
+## 🚀 Schnellstart (Quellcode)
 
 ```bash
 # 1. Repository klonen
@@ -53,7 +66,7 @@ Beim ersten Start wird VICE automatisch gesucht. Wird es nicht gefunden, öffnet
 
 ---
 
-## EXE bauen (Windows)
+## 📦 EXE bauen (Windows)
 
 ```bat
 build.bat
@@ -63,15 +76,15 @@ Die fertige EXE liegt danach unter `dist\retrokauz_launcher.exe` und kann ohne P
 
 ---
 
-## Themes
+## 🎨 Themes
 
 Im Ordner `themes/` befinden sich QSS-Stildateien (C64-Look, Pixel-Style). Die Themes werden zur Laufzeit geladen und können jederzeit angepasst werden.
 
 ---
 
-## Projektstruktur
+## 📁 Projektstruktur
 
-```
+```ini
 VICE-Launcher/
 ├── retrokauz_launcher.py   # Hauptprogramm
 ├── retrokauz_launcher.spec # PyInstaller-Konfiguration
@@ -87,13 +100,17 @@ VICE-Launcher/
 
 ---
 
-## Lizenz
+## 📜 Lizenz
 
-MIT License – siehe [LICENSE](LICENSE).
+GNU GPL v3 – siehe [LICENSE](LICENSE).
 
-VICE selbst steht unter der **GNU GPL v2+** und wird vom VICE-Team entwickelt.  
+VICE selbst steht unter der **GNU GPL v2+** und wird vom VICE-Team entwickelt.
 Dieses Projekt ist kein offizielles VICE-Produkt und steht in keiner Verbindung zum VICE-Team.
 
 ---
 
-*Erstellt von [Dennis Rapp (Retrokauz)](https://dennisrapp.com)*
+<div align="center">
+
+*Erstellt von [Dennis Rapp (Retrokauz)](https://dennisrapp.com)* 🖥️
+
+</div>
