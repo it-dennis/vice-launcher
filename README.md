@@ -35,11 +35,25 @@ VICE ist super! Und jetzt noch dieser Launcher dazu. Knorke und Retro. 💾
 
 ---
 
+## ✨ Funktionen
+
+- **Ein Klick, ein Emulator:** Jeder VICE-Emulator startet per Button. Optional lädt der Launcher dabei ein Disk-/Tape-/Programm-Image per Autostart.
+- **Menü „Image“:**
+  - *Neues Image erstellen und starten mit …* legt über `c1541` ein formatiertes Image an (d64, d71, d81, d80, d82, g64; je nach Emulator) und hängt es in Laufwerk 8 ein.
+  - *Vorhandenes Image starten mit …* zeigt im Datei-Dialog nur die Endungen, die der gewählte Emulator lesen kann.
+- **Image-Erkennung:** Passt Endung oder Startadresse des ersten Programms nicht zum gewählten Emulator, erscheint eine Warnung mit der Empfehlung, welcher Emulator geeignet ist.
+- **Fenster-Layout:** Launcher und Emulatorfenster werden automatisch nebeneinander und mittig auf dem Monitor angeordnet.
+- **C128:** Vor dem Start wählst du, ob nur das 40-Zeichen-Fenster (VIC-IIe) oder beide Bildschirme (40 und 80 Zeichen) geöffnet werden.
+- **Menü „Info“:** zeigt den VICE-Pfad und einen Katalog aller Image-Formate. Der Katalog lässt sich als **PDF-Ratgeber** speichern (Endungen, Rechner, Zuordnung zu den Emulatoren, Tipps).
+- **Menü „Einstellungen“:** Standardordner für Disk-Images festlegen oder zurücksetzen.
+
+---
+
 ## ✅ Voraussetzungen
 
 - **VICE** muss installiert sein → [Download vice-emu.sourceforge.io](https://vice-emu.sourceforge.io/)
 - **Python 3.11+** (nur für den Quellstart / Build)
-- **Pillow** (`pip install pillow`)
+- **Pillow** (Bilder) und **reportlab** (PDF-Ratgeber) – beides über `pip install -r requirements.txt`
 
 ---
 
@@ -87,12 +101,13 @@ Im Ordner `themes/` befinden sich QSS-Stildateien (C64-Look, Pixel-Style). Die T
 ```ini
 VICE-Launcher/
 ├── retrokauz_launcher.py   # Hauptprogramm
+├── image_guide_pdf.py      # PDF-Ratgeber „Image-Formate und Systeme“
 ├── retrokauz_launcher.spec # PyInstaller-Konfiguration
 ├── requirements.txt
 ├── build.bat               # Windows-Build-Skript
 ├── build.sh                # Linux/macOS-Build-Skript
 ├── icons/                  # Button-Icons
-├── logo/                   # Logo-Grafiken
+├── logo/                   # Logo-Grafiken (inkl. PDF-Header)
 ├── favicon/                # Fenster-Icon
 ├── themes/                 # QSS-Themes + Token-Datei
 └── landingpage/            # Statische Projektseite (HTML)
