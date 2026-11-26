@@ -472,6 +472,7 @@ def _ask_c128_display(parent: tk.Tk) -> str | None:
     win.configure(bg=BG_COLOR)
     win.resizable(False, False)
     result: list[str] = []
+    remember_var = tk.BooleanVar(value=False)
 
     tk.Label(
         win,
@@ -484,6 +485,8 @@ def _ask_c128_display(parent: tk.Tk) -> str | None:
 
     def _pick(choice: str) -> None:
         result.append(choice)
+        if remember_var.get():
+            save_config({**load_config(), "c128_display": choice})
         win.destroy()
 
     for text, choice in (
@@ -495,6 +498,11 @@ def _ask_c128_display(parent: tk.Tk) -> str | None:
             activebackground=BTN_HOVER, activeforeground=TEXT_COLOR,
             font=("Segoe UI", 9, "bold"), relief="flat", cursor="hand2", padx=10, pady=6,
         ).pack(fill="x", padx=20, pady=3)
+    tk.Checkbutton(
+        win, text="Auswahl merken", variable=remember_var, bg=BG_COLOR, fg=TEXT_COLOR,
+        selectcolor=BTN_COLOR, activebackground=BG_COLOR, activeforeground=TEXT_COLOR,
+        font=("Segoe UI", 9), cursor="hand2",
+    ).pack(anchor="w", padx=20, pady=(6, 0))
     tk.Button(
         win, text="Abbrechen", command=win.destroy, bg=DISK_BG, fg=MUTED_COLOR,
         activebackground=BTN_HOVER, activeforeground=TEXT_COLOR,
@@ -543,7 +551,9 @@ def launch_enhanced(
             return
 
     if exe_name == "x128.exe":
-        choice = _ask_c128_display(root)
+        choice = load_config().get("c128_display")
+        if choice not in ("both", "vic"):
+            choice = _ask_c128_display(root)
         if choice is None:
             return
         # VICE speichert Kommandozeilen-Einstellungen; deshalb immer explizit setzen
@@ -890,6 +900,16 @@ def build_ui() -> None:
                 parent=root,
             )
 
+    def _clear_c128_display() -> None:
+        cfg = load_config()
+        if cfg.pop("c128_display", None) is None:
+            messagebox.showinfo("Nichts gespeichert",
+                                "Es ist keine C128-Anzeigewahl gespeichert.", parent=root)
+            return
+        save_config(cfg)
+        messagebox.showinfo("Zurückgesetzt",
+                            "Der C128 fragt beim nächsten Start wieder nach.", parent=root)
+
     def _clear_image_dir() -> None:
         cfg = load_config()
         if "disk_image_dir" not in cfg:
@@ -1012,6 +1032,8 @@ def build_ui() -> None:
                              activebackground=BTN_HOVER, activeforeground=TEXT_COLOR)
     settings_menu.add_command(label="Disk Image Ordner festlegen …", command=_set_image_dir)
     settings_menu.add_command(label="Disk Image Ordner zurücksetzen", command=_clear_image_dir)
+    settings_menu.add_separator()
+    settings_menu.add_command(label="C128-Anzeigewahl zurücksetzen", command=_clear_c128_display)
     menubar.add_cascade(label="Einstellungen", menu=settings_menu)
 
     info_menu = tk.Menu(menubar, tearoff=0, bg="#1f1575", fg=TEXT_COLOR,

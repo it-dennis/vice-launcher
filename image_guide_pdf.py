@@ -14,7 +14,7 @@ from datetime import date
 from pathlib import Path
 
 from reportlab.lib import colors
-from reportlab.lib.enums import TA_CENTER
+from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.utils import ImageReader
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -42,8 +42,8 @@ FORMAT_DETAILS = {
     "d64": ("Diskette 5,25 Zoll, Laufwerk 1541/1551",
             "35 Tracks, 683 Blöcke, 174.848 Byte (664 Blöcke frei)",
             "Das häufigste Format überhaupt. Eine 40-Track-Variante (196.608 Byte) "
-            "wird von manchen Programmen und Laufwerks-Erweiterungen genutzt. Sichert nur "
-            "die Dateien, keinen Kopierschutz."),
+            "wird von manchen Programmen und Laufwerks-Erweiterungen genutzt. Es fehlen "
+            "Sektor-Kopfdaten, deshalb laufen manche Programme mit Kopierschutz nicht."),
     "d67": ("Diskette 5,25 Zoll, Laufwerk 2040/3040",
             "35 Tracks, ca. 170 KB",
             "Älteres IEEE-488-Format der ersten Commodore-Doppellaufwerke (DOS 1). "
@@ -67,7 +67,7 @@ FORMAT_DETAILS = {
             "5 bzw. 7,5 MB",
             "Abbild der Commodore-Festplatten für die IEEE-488-Rechner. Selten."),
     "g64": ("Diskette 5,25 Zoll, Laufwerk 1541 (Rohdaten)",
-            "GCR-Bitstrom, Größe variabel (ca. 200-300 KB)",
+            "GCR-Bitstrom, typisch ca. 330 KB (333.744 Byte bei 42 Tracks)",
             "Speichert die Spuren so, wie sie auf der Diskette magnetisiert sind, inklusive "
             "Kopierschutz, Fehlersektoren und Halbspuren. Wichtig für Original-Spiele "
             "mit Schutz."),
@@ -76,8 +76,8 @@ FORMAT_DETAILS = {
             "Wie g64, aber für doppelseitige 1571-Disketten."),
     "x64": ("Diskette 5,25 Zoll, Laufwerk 1541",
             "64-Byte-Kopf + d64-Daten",
-            "Älteres Format des Emulators X64. VICE liest es, legt es aber nicht mehr neu "
-            "an. für neue Images bitte d64 verwenden."),
+            "Älteres Format des Emulators X64. Das Format gilt als veraltet; "
+            "für neue Images bitte d64 verwenden."),
     "t64": ("Kassetten-Archiv (Container)",
             "Verzeichnis + beliebig viele Programme",
             "Stammt vom Emulator C64S. Fasst mehrere Programme einer Kassette in einer Datei "
@@ -149,7 +149,7 @@ SYSTEM_DETAILS = {
         "aus. Gleiche Startadresse wie der C64 ($0801).",
     ),
     "xcbm2.exe": (
-        "Serie B und P (CBM 600/700, 1983)",
+        "Serie B und P (CBM 600/700, 1982)",
         "CPU 6509 mit Speicherbanking, Textbildschirm (600/700) und BASIC 4.0. "
         "Programme liegen in Bank 1 und beginnen bei $0003. Laufwerke wie beim PET "
         "(IEEE-488), daher d80/d82.",
@@ -176,7 +176,7 @@ def _styles() -> dict[str, ParagraphStyle]:
     base = getSampleStyleSheet()
     return {
         "title": ParagraphStyle("t", parent=base["Title"], textColor=BLUE, fontSize=22,
-                                leading=26, spaceAfter=2),
+                                leading=26, spaceAfter=2, alignment=TA_LEFT),
         "sub":   ParagraphStyle("s", parent=base["Normal"], textColor=BLUE_LITE, fontSize=11,
                                 spaceAfter=10),
         "h1":    ParagraphStyle("h1", parent=base["Heading1"], textColor=BLUE, fontSize=15,
@@ -362,5 +362,16 @@ def create_format_pdf(path: Path, emulators: list[dict], format_info: dict[str, 
         "VICE (Versatile Commodore Emulator) wird vom VICE-Team entwickelt und steht unter der "
         "GNU General Public License. Mehr unter https://vice-emu.sourceforge.io/",
         ParagraphStyle("note", parent=st["cell"], textColor=colors.grey)))
+
+    story.append(Spacer(1, 6))
+    story.append(Paragraph(
+        "<b>Haftungsausschluss:</b> Dieser Ratgeber dient nur der allgemeinen Information. "
+        "Trotz sorgfältiger Zusammenstellung wird keine Gewähr für Richtigkeit, "
+        "Vollständigkeit und Aktualität der Angaben übernommen. Die Nutzung erfolgt auf "
+        "eigene Verantwortung; eine Haftung für Schäden, die aus der Verwendung der "
+        "Angaben oder des Programms entstehen, ist - soweit gesetzlich zulässig - "
+        "ausgeschlossen. Genannte Produkt- und Markennamen gehören ihren jeweiligen "
+        "Inhabern.",
+        ParagraphStyle("disc", parent=st["cell"], textColor=colors.grey)))
 
     doc.build(story, onFirstPage=_footer, onLaterPages=_footer)
